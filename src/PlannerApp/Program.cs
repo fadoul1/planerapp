@@ -1,4 +1,5 @@
 using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor.Services;
@@ -10,7 +11,7 @@ namespace PlannerApp
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static async Task Main(string[] args) 
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
@@ -25,6 +26,8 @@ namespace PlannerApp
 
             builder.Services.AddMudServices();
             builder.Services.AddBlazoredLocalStorage();
+            builder.Services.AddAuthorizationCore();
+            builder.Services.AddScoped<AuthenticationStateProvider, JwtAuthenticationStateProvider>();
 
             await builder.Build().RunAsync();
         }
