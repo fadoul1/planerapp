@@ -17,7 +17,7 @@ namespace PlannerApp
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            if(await _storage.ContainKeyAsync("accesss_token"))
+            if(await _storage.ContainKeyAsync("access_token"))
             {
                 //l'utilisateur est connecte
                 var tokenAsString = await _storage.GetItemAsStringAsync("access_token");

@@ -18,11 +18,11 @@ namespace PlannerApp
 
             builder.Services.AddHttpClient("PlannerApp.Api", client =>
             {
-                client.BaseAddress = new Uri("https://plannerapp-api.azurewebsites.net/");
+                client.BaseAddress = new Uri("https://plannerapp-api.azurewebsites.net");
             }).AddHttpMessageHandler<AuthorizationMessageHandler>();
 
             builder.Services.AddTransient<AuthorizationMessageHandler>();
-            builder.Services.AddScoped(sp => sp.GetService<IHttpClientFactory>().CreateClient("Planner.Api"));
+            builder.Services.AddScoped(sp => sp.GetService<IHttpClientFactory>().CreateClient("PlannerApp.Api"));
 
             builder.Services.AddMudServices();
             builder.Services.AddBlazoredLocalStorage();
