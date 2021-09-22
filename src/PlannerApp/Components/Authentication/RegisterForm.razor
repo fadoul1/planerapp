@@ -1,0 +1,50 @@
+﻿@namespace PlannerApp.Components
+
+<div style="max-width: 700px;">
+    <EditForm Model="_model" OnValidSubmit="RegisterUserAsync">
+        <FluentValidationValidator />
+
+        <MudCard>
+
+            <MudCardHeader>
+                <MudText Typo="Typo.h6">Welcome to PlannerApp</MudText>
+                <MudText Typo="Typo.body2">Create a new account</MudText>
+            </MudCardHeader>
+
+            <MudCardContent>
+                <MudTextField Label="Email" Class="mt-3" HelperText="Required"
+                              Placeholder="test@plannerapp.com" @bind-Value="@_model.Email" />
+
+                <MudTextField Label="First Name" Class="mt-3" HelperText="Required" @bind-Value="@_model.FirstName" />
+                <MudTextField Label="Last Name" Class="mt-3" HelperText="Required" @bind-Value="@_model.LastName" />
+
+                <MudTextField InputType="InputType.Password" Label="Password"
+                              HelperText="Password" Class="mt-3" @bind-Value="@_model.Password" />
+
+                <MudTextField InputType="InputType.Password" Label="Confirm Password"
+                              HelperText="Confirm Password" Class="mt-3" @bind-Value="@_model.ConfirmPassword" />
+
+                <ValidationSummary />
+
+                @if (!string.IsNullOrWhiteSpace(_errorMessage))
+                {
+                    <MudAlert Severity="Severity.Error" Class="my-2" Variant="Variant.Filled">@_errorMessage</MudAlert>
+                }
+            </MudCardContent>
+
+            <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Success"
+                           Class="ml-auto" Disabled="_isBusy">Register</MudButton>
+
+                <MudButton Variant="Variant.Filled" OnClick="RedirectToLogin"
+                           Color="Color.Primary" Class="ml-auto" Disabled="_isBusy">Login</MudButton>                
+
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+</div>
+
+
+@code {
+
+}

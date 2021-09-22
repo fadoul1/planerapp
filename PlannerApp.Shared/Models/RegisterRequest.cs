@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PlannerApp.Shared.Models
+﻿namespace PlannerApp.Shared.Models
 {
     public class RegisterRequest
     {
-        [  ]
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
